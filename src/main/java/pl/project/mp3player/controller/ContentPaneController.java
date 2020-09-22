@@ -21,9 +21,12 @@ public class ContentPaneController {
     @FXML
     private TableView<Mp3Song> contentTable;
 
+    public TableView<Mp3Song> getContentTable() {
+        return contentTable;
+    }
+
     public void initialize(){
         createTable();
-        createMp3List();
     }
 
     private void createTable(){
@@ -39,27 +42,6 @@ public class ContentPaneController {
         contentTable.getColumns().add(titleColumn);
         contentTable.getColumns().add(authorColumn);
         contentTable.getColumns().add(albumColumn);
-    }
-
-    private void createMp3List(){
-        ObservableList<Mp3Song> items = contentTable.getItems();
-        Mp3Song mp3Song = createMp3Song("BardzoProsze.mp3");
-        items.add(mp3Song);
-    }
-
-    private Mp3Song createMp3Song(String path){
-        File file = new File(path);
-        try {
-            MP3File mp3File = new MP3File(file);
-            String filePath = file.getAbsolutePath();
-            String title = mp3File.getID3v2Tag().getSongTitle();
-            String album = mp3File.getID3v2Tag().getAlbumTitle();
-            String author = mp3File.getID3v2Tag().getLeadArtist();
-            return new Mp3Song(title, author, album, filePath);
-        } catch(TagException | IOException e){
-            e.printStackTrace();
-            return null;
-        }
     }
 
 }

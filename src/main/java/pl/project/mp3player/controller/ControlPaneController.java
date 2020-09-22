@@ -5,6 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
 
@@ -25,6 +26,13 @@ public class ControlPaneController {
     @FXML
     private Slider progressSlider;
 
+    @FXML
+    private TextField messageTextField;
+
+    public TextField getMessageTextField() {
+        return messageTextField;
+    }
+
     public Button getPreviousButton() {
         return previousButton;
     }
@@ -43,31 +51,6 @@ public class ControlPaneController {
 
     public Slider getProgressSlider() {
         return progressSlider;
-    }
-
-    public void initialize() {
-        configureButtons();
-        configureSlider();
-    }
-
-    public void configureButtons() {
-        previousButton.setOnAction(x -> System.out.println("Previous Button"));
-        nextButton.setOnAction(x -> System.out.println("Next Button"));
-        playButton.setOnAction(x -> {
-            if (playButton.isSelected()) {
-                System.out.println("Play");
-            } else {
-                System.out.println("Stop");
-            }
-        });
-    }
-
-    public void configureSlider() {
-        volumeSlider.valueProperty().addListener(
-                (observableValue, oldValue, newValue) -> System.out.println("Zmiana głośności " + newValue.doubleValue()));
-        progressSlider.valueProperty().addListener(
-                ((observableValue, oldValue, newValue) -> System.out.println("Przesunięcie piosenki")));
-
     }
 
 }
