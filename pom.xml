@@ -12,6 +12,7 @@
         <maven.compiler.source>13</maven.compiler.source>
         <maven.compiler.target>13</maven.compiler.target>
         <javafx.version>15</javafx.version>
+        <jid3lib.version>0.5.4</jid3lib.version>
     </properties>
 
     <dependencies>
@@ -32,6 +33,12 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>${javafx.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/net.sf.javamusictag/jid3lib -->
+        <dependency>
+            <groupId>net.sf.javamusictag</groupId>
+            <artifactId>jid3lib</artifactId>
+            <version>${jid3lib.version}</version>
         </dependency>
     </dependencies>
 
